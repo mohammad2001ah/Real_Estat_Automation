@@ -67,6 +67,25 @@ public class LoginPage {
 		Assert.assertEquals(ActualMessage, ExpectedMessage);
 		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
 	}
+	@Test(enabled = true)
+	public void LoginWithInvalidEmail() {
+		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
+		EmailField.sendKeys("mohammad7@gmail.com");
+		
+		WebElement PasswordField=driver.findElement(By.xpath("//input[@type='password']"));
+		PasswordField.sendKeys("123456789");
+		
+		WebElement LoginButton=driver.findElement(By.xpath("//button[@type='submit']"));
+		LoginButton.click();
+		
+		//Assertion
+		WebElement ErrorMessage =driver.findElement(By.className("error-message"));
+		String ActualMessage=ErrorMessage.getText();
+		String ExpectedMessage = "Invalid email or password";
+		Assert.assertEquals(ActualMessage, ExpectedMessage);
+		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
+	}
+	
 	@AfterMethod
 	public void CloseBrowser() throws InterruptedException {
 		Thread.sleep(3000);
