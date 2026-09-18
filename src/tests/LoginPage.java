@@ -65,6 +65,7 @@ public class LoginPage {
 		String ActualMessage=ErrorMessage.getText();
 		String ExpectedMessage = "Invalid email or password";
 		Assert.assertEquals(ActualMessage, ExpectedMessage);
+		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
 	}
 	@AfterMethod
 	public void CloseBrowser() throws InterruptedException {
