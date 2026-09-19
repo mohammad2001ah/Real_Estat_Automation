@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
+	//POM
 	WebDriver driver;
 	//Locators
 	private By EmailField=By.xpath("//input[@type='email']");
