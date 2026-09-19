@@ -3,29 +3,20 @@ package tests;
 import java.time.Duration;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import base.BaseTest;
 import pages.LoginPage;
 
-public class LoginTest {
-	WebDriver driver;
+public class LoginTest extends BaseTest {
 	LoginPage loginPage;
 	String MyWebSite="http://localhost:3000/login";
 	
 	@BeforeMethod
 	public void MySetup() {
-		driver=new ChromeDriver();
 		loginPage=new LoginPage(driver);
 		driver.get(MyWebSite);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 	@Test(enabled = true,priority = 1)
 	public void LoginWithValidData() throws InterruptedException {
@@ -110,16 +101,4 @@ public class LoginTest {
 		System.out.println("Test 7 - Login With Invalid Email Format");
 	}
 	
-	@AfterMethod
-	public void CloseBrowser(ITestResult result) throws InterruptedException {
-		if(result.getStatus()== ITestResult.SUCCESS) {
-			System.out.println("PASSED: " + result.getName());
-		}
-		else if(result.getStatus()== ITestResult.FAILURE) {
-			System.out.println("FAILED: " + result.getName());	
-		}
-		System.out.println("_________________________________________________");
-		Thread.sleep(1000);
-	    driver.quit();
-	}
 }

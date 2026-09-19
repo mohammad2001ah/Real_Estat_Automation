@@ -2,29 +2,22 @@ package tests;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import base.BaseTest;
 import pages.RegisterPage;
 
-public class RegisterTest {
-	WebDriver driver;
+public class RegisterTest extends BaseTest  {
 	RegisterPage registerPage;
 	String myWebPage = "http://localhost:3000/register";
 
 	@BeforeMethod
 	public void MySetup() {
-		driver = new ChromeDriver();
 		registerPage = new RegisterPage(driver);
 		driver.get(myWebPage);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 
 	@Test(priority = 1)
@@ -148,15 +141,4 @@ public class RegisterTest {
 		Assert.assertTrue(registerPage.IsLogoutButtonDisplayed());
 	}
 
-	@AfterMethod
-	public void CloseTest(ITestResult result) throws InterruptedException {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			System.out.println("PASSED: " + result.getName());
-		} else if (result.getStatus() == ITestResult.FAILURE) {
-			System.out.println("FAILED: " + result.getName());
-		}
-		System.out.println("_________________________________________________");
-		Thread.sleep(1000);
-		driver.quit();
-	}
 }
