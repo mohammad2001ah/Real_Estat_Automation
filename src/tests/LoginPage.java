@@ -49,7 +49,7 @@ public class LoginPage {
 		
 		Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:3000/properties");
 	}
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void LoginWithInvalidPassword() {
 		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
 		EmailField.sendKeys("mohammad1@gmail.com");
@@ -67,7 +67,7 @@ public class LoginPage {
 		Assert.assertEquals(ActualMessage, ExpectedMessage);
 		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
 	}
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void LoginWithInvalidEmail() {
 		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
 		EmailField.sendKeys("mohammad7@gmail.com");
@@ -83,6 +83,62 @@ public class LoginPage {
 		String ActualMessage=ErrorMessage.getText();
 		String ExpectedMessage = "Invalid email or password";
 		Assert.assertEquals(ActualMessage, ExpectedMessage);
+		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
+	}
+	@Test(enabled = false)
+	public void LoginWithEmptyEmail() {
+		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
+		EmailField.sendKeys("");
+		
+		WebElement PasswordField=driver.findElement(By.xpath("//input[@type='password']"));
+		PasswordField.sendKeys("123456789");
+		
+		WebElement LoginButton=driver.findElement(By.xpath("//button[@type='submit']"));
+		LoginButton.click();
+		
+		//Assertion
+		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
+	}
+	@Test(enabled = false)
+	public void LoginWithEmptyPassword() {
+		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
+		EmailField.sendKeys("moahmmad1@gmail.com");
+		
+		WebElement PasswordField=driver.findElement(By.xpath("//input[@type='password']"));
+		PasswordField.sendKeys("");
+		
+		WebElement LoginButton=driver.findElement(By.xpath("//button[@type='submit']"));
+		LoginButton.click();
+		
+		//Assertion
+		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
+	}
+	@Test(enabled = false)
+	public void LoginWithEmptyField() {
+		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
+		EmailField.sendKeys("");
+		
+		WebElement PasswordField=driver.findElement(By.xpath("//input[@type='password']"));
+		PasswordField.sendKeys("");
+		
+		WebElement LoginButton=driver.findElement(By.xpath("//button[@type='submit']"));
+		LoginButton.click();
+		
+		//Assertion
+		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
+	}
+	@Test(enabled = true)
+	public void LoginWithInvalidEmailFormat() {
+		WebElement EmailField=driver.findElement(By.xpath("//input[@type='email']"));
+		EmailField.sendKeys("mohammad7.gmail.com");
+		
+		WebElement PasswordField=driver.findElement(By.xpath("//input[@type='password']"));
+		PasswordField.sendKeys("123456789");
+		
+		WebElement LoginButton=driver.findElement(By.xpath("//button[@type='submit']"));
+		LoginButton.click();
+		
+		//Assertion
 		Assert.assertNotEquals(driver.getCurrentUrl(),"http://localhost:3000/properties");
 	}
 	

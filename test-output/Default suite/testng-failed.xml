@@ -5,8 +5,9 @@
     <classes>
       <class name="tests.LoginPage">
         <methods>
-          <include name="LoginWithValidData"/>
+          <include name="CloseBrowser"/>
           <include name="MySetup"/>
+          <include name="LoginWithInvalidEmailFormat"/>
         </methods>
       </class> <!-- tests.LoginPage -->
     </classes>
