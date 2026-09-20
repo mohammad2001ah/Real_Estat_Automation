@@ -1,6 +1,5 @@
 package pages;
 
-import java.net.spi.InetAddressResolver.LookupPolicy;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
