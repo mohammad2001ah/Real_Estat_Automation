@@ -27,7 +27,6 @@ public class BaseTest {
 			System.out.println("FAILED: " + result.getName());
 		}
 		System.out.println("_________________________________________________");
-		Thread.sleep(1000);
 		driver.quit();
 	}
 }

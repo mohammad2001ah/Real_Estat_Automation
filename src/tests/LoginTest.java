@@ -45,8 +45,8 @@ public class LoginTest extends BaseTest {
 	}
 	@Test(enabled = true,priority = 3)
 	public void LoginWithInvalidEmail() {
-		loginPage.EnterEmail("mohammad1@gmail.com");
-		loginPage.EnterPassword("123587");
+		loginPage.EnterEmail("invalid55@gmail.com");
+		loginPage.EnterPassword("12356789");
 		loginPage.clickLogin();
 		loginPage.ErrorMessage();
 		//Assertion

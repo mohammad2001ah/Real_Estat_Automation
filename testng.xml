@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Real Estate Automation Suite">
+
+    <test name="Login and Registration Tests">
+        <classes>
+            <class name="tests.LoginTest"/>
+            <class name="tests.RegisterTest"/>
+        </classes>
+    </test>
+
+</suite>
